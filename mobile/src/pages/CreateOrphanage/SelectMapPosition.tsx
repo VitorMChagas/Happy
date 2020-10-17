@@ -9,7 +9,7 @@ import mapMarkerImg from '../../images/map-marker.png';
 
 export default function SelectMapPosition() {
   const navigation = useNavigation();
-  const [position, setPosition] = useState({ latitude: 0, longitude:0 });
+  const [position, setPosition] = useState({ latitude: 0, longitude: 0});
 
   function handleNextStep() {
     navigation.navigate('OrphanageData', { position });
@@ -21,7 +21,7 @@ export default function SelectMapPosition() {
 
   return (
     <View style={styles.container}>
-    <MapView 
+      <MapView
         initialRegion={{
           latitude: -22.9184625,
           longitude: -43.6970081,
@@ -31,18 +31,18 @@ export default function SelectMapPosition() {
         style={styles.mapStyle}
         onPress={handleSelectMapPosition}
       >
-        { position.latitude !== 0 && (
-          <Marker 
+        {position.latitude !== 0 && (
+          <Marker
             icon={mapMarkerImg}
             coordinate={{ latitude: position.latitude, longitude: position.longitude }}
           />
         )}
       </MapView>
-        
-      { position.latitude !== 0 && (
-      <RectButton style={styles.nextButton} onPress={handleNextStep}>
-        <Text style={styles.nextButtonText}>Próximo</Text>
-      </RectButton>
+
+      {position.latitude !== 0 && (
+        <RectButton style={styles.nextButton} onPress={handleNextStep}>
+          <Text style={styles.nextButtonText}>Próximo</Text>
+        </RectButton>
       )}
     </View>
   )
